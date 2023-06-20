@@ -24,7 +24,7 @@ public class MemberServiceV2 {
         try {
             con.setAutoCommit(false); // 트랜잭션 시작
             // 비지니스 로직
-            bizLogin(con, fromId, toId, money);
+            bizLogic(con, fromId, toId, money);
             con.commit();
         } catch (Exception e) {
             con.rollback();
@@ -34,7 +34,7 @@ public class MemberServiceV2 {
         }
     }
 
-    private void bizLogin(Connection con, String fromId, String toId, int money) throws SQLException {
+    private void bizLogic(Connection con, String fromId, String toId, int money) throws SQLException {
         Member fromMember = memberRepository.findById(con, fromId);
         Member toMember = memberRepository.findById(con, toId);
 
